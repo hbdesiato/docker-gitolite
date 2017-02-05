@@ -1,4 +1,4 @@
-FROM finalduty/archlinux
+FROM desiato/archlinux
 
 RUN pacman --noconfirm -Syu && \
 pacman --noconfirm -S openssh gitolite && \

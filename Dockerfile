@@ -1,7 +1,12 @@
 FROM desiato/archlinux
 
-RUN pacman --noconfirm -Syu && \
-    pacman --noconfirm -S systemd gitolite sudo && \
+RUN echo 'nobody:x:65534:65534:Nobody:/:/sbin/nologin' >> /etc/passwd && \
+    echo 'nobody:x:::::::' >> /etc/shadow && \
+    echo 'nobody:x:65534:' >> /etc/group && \
+    echo 'nobody:::' >> /etc/gshadow && \
+    useradd -d /var/lib/gitolite gitolite && \
+    pacman --noconfirm -Syu && \
+    pacman --noconfirm -S gitolite sudo && \
     echo -e 'y\ny' | pacman -Scc && \
     rm -r /usr/share/man/* && \
     ls -d /usr/share/locale/* | egrep -v 'alias|en_US' | xargs rm -rf

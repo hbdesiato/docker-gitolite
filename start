@@ -10,7 +10,7 @@ HOST_KEYS=''
 for ALG in rsa dsa ecdsa ed25519
 do
 [ -e .ssh_host/ssh_host_${ALG}_key ] || ssh-keygen -N '' -t ${ALG} -f .ssh_host/ssh_host_${ALG}_key
-HOST_KEYS="${HOST_KEYS} -h .ssh_host/ssh_host_${ALG}_key"
+HOST_KEYS="${HOST_KEYS} -h ~gitolite/.ssh_host/ssh_host_${ALG}_key"
 done
 
 umask $UMASK

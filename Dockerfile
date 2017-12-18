@@ -4,7 +4,7 @@ RUN echo 'nobody:x:65534:65534:Nobody:/:/sbin/nologin' >> /etc/passwd && \
     echo 'nobody:x:::::::' >> /etc/shadow && \
     echo 'nobody:x:65534:' >> /etc/group && \
     echo 'nobody:::' >> /etc/gshadow && \
-    useradd -d /var/lib/gitolite gitolite && \
+    useradd -r -u 196 -d /var/lib/gitolite gitolite && \
     pacman --noconfirm -Syu && \
     pacman --noconfirm -S gitolite sudo && \
     echo -e 'y\ny' | pacman -Scc && \
